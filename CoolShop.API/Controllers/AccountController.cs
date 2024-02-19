@@ -26,7 +26,6 @@ namespace CoolShop.API.Controllers
         }
 
         // TODO: Добавить бд и слои абстракций
-        // TODO: Возвращаемый результат
         // TODO: jwt аутидентификация/авторизация
         [HttpPost("login")]
         public IActionResult Login(LoginDto loginDto)
@@ -37,7 +36,7 @@ namespace CoolShop.API.Controllers
             if (account.Password != loginDto.Password) return Unauthorized(loginDto.Login);
             account.IsLogin = true;
 
-            return Ok();
+            return Ok(account);
         }
 
         [HttpPut("logout/{login}")]
@@ -46,7 +45,7 @@ namespace CoolShop.API.Controllers
             _logger.LogInformation($"Try logout by - {login}");
             var account = _accounts.FirstOrDefault(a => a.Login == login);
             if (account == null) return NotFound(login);
-           
+
             account.IsLogin = false;
 
             return Ok();

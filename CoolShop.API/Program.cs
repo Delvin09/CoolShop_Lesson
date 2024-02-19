@@ -15,6 +15,8 @@ namespace CoolShop.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,6 +25,8 @@ namespace CoolShop.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(builder => builder.AllowCredentials().AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
             app.UseHttpsRedirection();
 
