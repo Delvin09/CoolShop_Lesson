@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountsService } from '../_services/accounts.service';
 
 @Component({
   selector: 'app-register',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  model: any;
+
+constructor(private accountService: AccountsService) {}
+
+  onRegister() {
+    this.accountService.register(this.model);
+  }
 }

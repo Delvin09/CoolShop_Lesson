@@ -1,0 +1,38 @@
+<h1>Create new product</h1>
+<div class="container text-center align-items-center justify-content-center">
+<div class="col-5 ">
+    <div class="container py-2">
+        
+        <div class="row vertical-center-row">
+            <form class="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+                <div class="mb-2">
+                    <input class="form-control" name="name" [(ngModel)]="model.Name" type="text" placeholder="Name" />
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" name="price" [(ngModel)]="model.Price" type="number" placeholder="Price" />
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" name="discountPrice" [(ngModel)]="model.DiscountPrice" type="number" placeholder="DiscountPrice" />
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" name="stock" [(ngModel)]="model.Stock" type="number" placeholder="Stock" />
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" name="ratio" [(ngModel)]="model.Ratio" type="number" placeholder="Ratio" />
+                </div>
+                <select class="form-select" name="Category" [(ngModel)]="model.Category">
+                    <option selected value="Laptops">Laptops</option>
+                    <option value="Phones">Phones</option>
+                    <option value="Videcards">Videcards</option>
+                  </select>
+                
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-success" type="submit">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

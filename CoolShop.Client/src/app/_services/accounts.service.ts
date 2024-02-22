@@ -27,6 +27,16 @@ export class AccountsService {
       );
   }
 
+  register(model: any) {
+    return this.client.post<any>('https://localhost:7234/api/account/register/user', model)
+      .pipe(
+        map(user => {
+          localStorage.setItem('user', JSON.stringify(user));
+          return user;
+        })
+      );
+  }
+
   getCurrentUser() : any {
     const user = localStorage.getItem('user');
     if (user) 

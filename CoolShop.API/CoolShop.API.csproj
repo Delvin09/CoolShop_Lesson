@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.Entity.SqlServer\CoolShop.Entity.SqlServer.csproj" />
+    <ProjectReference Include="..\CoolShop.Repositories\CoolShop.Repositories.csproj" />
+    <ProjectReference Include="..\CoolShop.Services\CoolShop.Services.csproj" />
   </ItemGroup>
 
 </Project>

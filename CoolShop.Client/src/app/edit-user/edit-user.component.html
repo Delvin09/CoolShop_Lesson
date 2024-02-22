@@ -1,15 +1,12 @@
-<h4>Hello Cool Shop! Please Register.</h4>
+<h1>Edit {{model.Name}} info</h1>
 <div class="container text-center align-items-center justify-content-center">
 <div class="col-5 ">
-    <div class="container py-2" >
+    <div class="container py-2">
         
         <div class="row vertical-center-row">
-            <form class="form" (ngSubmit)="onRegister()" #registerForm="ngForm">
+            <form class="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
                 <div class="mb-2">
                     <input class="form-control" name="name" [(ngModel)]="model.Name" type="text" placeholder="Login" />
-                </div>
-                <div class="mb-2">
-                    <input class="form-control" name="password" [(ngModel)]="model.Password" type="password" placeholder="Password" />
                 </div>
                 <div class="mb-2">
                     <input class="form-control" name="email" [(ngModel)]="model.Email" type="email" placeholder="Email" />
@@ -22,7 +19,7 @@
                 
                 <div style="margin-top: 10px;">
                     <button class="btn btn-success" type="submit">
-                        Register
+                        Save
                     </button>
                 </div>
             </form>

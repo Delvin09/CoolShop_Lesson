@@ -11,4 +11,8 @@ export class UsersService {
   getAllUsers() {
     return this.client.get('https://localhost:7234/api/account/list');
   }
+
+  updateUser(model: any) {
+    return this.client.put('https://localhost:7234/api/account/' + model.Id, model);
+  }
 }

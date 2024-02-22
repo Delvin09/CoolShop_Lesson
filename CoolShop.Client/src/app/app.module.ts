@@ -7,10 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
-import { UserInfoComponent } from './user-info/user-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     RegisterComponent,
     UsersComponent,
-    UserInfoComponent
+    EditUserComponent,
+    EditProductComponent,
+    CreateProductComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
