@@ -1,14 +1,13 @@
 ﻿using CoolShop.API.Dtos;
-using CoolShop.Common;
 using CoolShop.Common.Repositories;
 using CoolShop.Common.Services;
 using CoolShop.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoolShop.API.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -25,6 +24,7 @@ namespace CoolShop.API.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
             _logger.LogInformation($"Try login by - {loginDto.Login}");
@@ -32,7 +32,7 @@ namespace CoolShop.API.Controllers
             {
                 var result = await _accountService.Login(loginDto.Login, loginDto.Password);
                 if (result.user == null) return NotFound(loginDto.Login);
-                return Ok(new { result.user, result.token });
+                return Ok(new { user = MapUserToDto(result.user), result.token });
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -42,6 +42,7 @@ namespace CoolShop.API.Controllers
         }
 
         [HttpPost("register/user")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(AccountDto accountDto)
         {
             _logger.LogInformation($"Register begin process with account dto - {accountDto}");
@@ -51,34 +52,47 @@ namespace CoolShop.API.Controllers
                 Email = accountDto.Email,
                 FirstName = accountDto.FirstName,
                 LastName = accountDto.LastName,
-                Password = accountDto.Password,
                 PhoneNumber = accountDto.PhoneNumber,
-                Login = accountDto.Login
+                Login = accountDto.Login,
+                Role = accountDto.Role
             };
 
-            var result = await _accountService.Register(user);
-            return Created("api/Account/" + user.Id, new { user, result.token });
+            var result = await _accountService.Register(user, accountDto.Password);
+            return Created("api/Account/" + user.Id, new { user = MapUserToDto(user), result.token });
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAccount(int id)
         {
             _logger.LogInformation($"Get account by id - {id}");
 
             var user = await _userRepository.GetUser(id);
             if (user != null)
-                return Ok(user);
+                return Ok(MapUserToDto(user));
 
             return NotFound("Account not found!");
         }
 
         [HttpGet("list")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAccountsList([FromQuery] string? firstName = null, [FromQuery] string? lastName = null)
         {
             _logger.LogInformation($"Get all accounts");
 
             var reuslts = await _userRepository.GetUsers(firstName, lastName);
-            return Ok(reuslts);
+            return Ok(reuslts.Select(r => MapUserToDto(r)));
+        }
+
+        private UserDto MapUserToDto(User user)
+        {
+            return new UserDto(
+                user.Login,
+                user.Role,
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                user.PhoneNumber);
         }
     }
 }

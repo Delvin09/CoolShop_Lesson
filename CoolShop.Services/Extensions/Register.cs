@@ -9,6 +9,7 @@ namespace CoolShop.Services.Extensions
         {
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IHashService, HashService>();
             return services;
         }
     }

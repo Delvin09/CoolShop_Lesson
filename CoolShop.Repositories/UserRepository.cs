@@ -34,7 +34,7 @@ namespace CoolShop.Repositories
         public Task<List<User>> GetUsers(string? firstName, string? lastName)
         {
             return _context.Users
-                .Where(u => u.FirstName == firstName && u.LastName == lastName)
+                .Where(u => (firstName == null || u.FirstName == firstName) && (lastName == null || u.LastName == lastName))
                 .ToListAsync();
         }
 

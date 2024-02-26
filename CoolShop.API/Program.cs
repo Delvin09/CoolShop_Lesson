@@ -8,6 +8,7 @@ using CoolShop.Services.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CoolShop.Common.Services;
 
 namespace CoolShop.API
 {
@@ -46,7 +47,6 @@ namespace CoolShop.API
                 });
 
             var app = builder.Build();
-
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

@@ -6,6 +6,6 @@ namespace CoolShop.Common.Services
     {
         Task<(User? user, string token)> Login(string login, string password);
 
-        Task<(User user, string token)> Register(User user);
+        Task<(User user, string token)> Register(User user, string password);
     }
 }

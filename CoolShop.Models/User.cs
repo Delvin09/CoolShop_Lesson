@@ -19,8 +19,9 @@ namespace CoolShop.Models
         public string? PhoneNumber { get; set; }
 
         [Required]
-        [StringLength(255)]
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
 
         [Required]
         [StringLength(50)]

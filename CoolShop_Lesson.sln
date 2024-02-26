@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.Common", "CoolShop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.Services", "CoolShop.Services\CoolShop.Services.csproj", "{A8FAC71F-1EA7-4ADD-BADB-32D99FEC5D67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.MVC", "CoolShop.MVC\CoolShop.MVC.csproj", "{83DAA97C-7934-4EFC-811A-78A3FC31A716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A8FAC71F-1EA7-4ADD-BADB-32D99FEC5D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8FAC71F-1EA7-4ADD-BADB-32D99FEC5D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8FAC71F-1EA7-4ADD-BADB-32D99FEC5D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DAA97C-7934-4EFC-811A-78A3FC31A716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DAA97C-7934-4EFC-811A-78A3FC31A716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DAA97C-7934-4EFC-811A-78A3FC31A716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DAA97C-7934-4EFC-811A-78A3FC31A716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

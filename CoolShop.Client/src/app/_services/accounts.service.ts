@@ -20,11 +20,7 @@ export class AccountsService {
   }
 
   logout(user : any) {
-    const login = user.login;
-    return this.client.put<any>('https://localhost:7234/api/account/logout/' + login, {})
-      .pipe(
-        map(_ => localStorage.removeItem('user'))
-      );
+    localStorage.removeItem('user');
   }
 
   register(model: any) {
